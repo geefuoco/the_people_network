@@ -1,0 +1,20 @@
+<% if flash.notice %>
+  <div class="container alert alert-info">
+    <%= flash.notice %>
+  </div>
+<% end %>
+<% if flash.alert %>
+  <div class="container alert alert-danger">
+    <%= flash.alert %>
+  </div>
+<% end %>
+<% if flash.now && flash.now.notice %>
+  <div class="container alert alert-info">
+    <%= flash.now.notice %>
+  </div>
+<% end %>
+<% if flash.now && flash.now.alert %>
+  <div class="container alert alert-danger">
+    <%= flash.now.alert %>
+  </div>
+<% end %>

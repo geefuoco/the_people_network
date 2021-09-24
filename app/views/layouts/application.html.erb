@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <!--NAVBAR -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        Hello
+      </div>
+    </nav>
+    <div class="container-fluid position-absolute top-10 text-center">
+      <%= render "flash" %>
+    </div>
     <%= yield %>
   </body>
 </html>
+
+<script defer>
+  $(".alert").fadeOut(4500)
+</script>
