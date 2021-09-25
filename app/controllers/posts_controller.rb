@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
   def index
-
+    @posts = Post.all
+    #change eventually to show only user posts and friend posts with a scope in the post class
   end
   
   def show
