@@ -13,15 +13,25 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="nav-collapse">
         <div class="navbar-nav">
-          <%= link_to "#", class: "btn text-start" do %>
-              <span class="text-light fs-3">
-                <i class="bi bi-grid-3x3-gap-fill"></i>      
+          <div class="dropdown">          
+            <button class="btn text-start dropdown-toggle caret-off"
+              type= "button"
+              id="dropdown-Menu"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+                <span class="text-light fs-3">
+                  <i class="bi bi-grid-3x3-gap-fill"></i>      
 
-                <p class="d-inline d-lg-none">
-                  Menu
-                </p>
-              </span>                   
-          <% end %>
+                  <p class="d-inline d-lg-none">
+                    Menu
+                  </p>
+                </span>                   
+            </button>
+            <ul class="dropdown-menu">
+              <%= link_to "Create Post", new_post_path,
+                class: "dropdown-item" %>
+            </ul>
+          </div>
           <%= link_to "#", class: "btn text-start" do %>
               <span class="text-light fs-3">
                 <i class="bi bi-bell"></i>

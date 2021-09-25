@@ -1,0 +1,35 @@
+<%= form_with model: @post, local: false, remote: true do |form| %>
+
+<div class="modal-header">
+  <h5 class="modal-title">Create a Post</h5>
+  <button class="btn-close"
+          type="button"
+          data-bs-dismiss="modal"
+          aria-label="Close">
+  </button>
+</div>
+<div class="modal-body">
+  <div class="conatiner d-flex flex-column">
+    <div class="container d-flex flex-column">
+      <%= form.label :body %>
+      <%= form.text_area :body, required: true, id: "body-field"%>
+    </div>
+  </div>
+</div>
+<div class="modal-footer container d-flex flex-column align-items-end">
+  <%= form.submit "Create Post",
+    class: "btn btn-primary btn-sm", 
+    id: "post-sumbit" %>
+</div>
+<% end %>
+
+<script defer>
+  $modal = $("#main-modal")
+  $("#post-submit").on("click", ()=>{
+    $submit = $("#post-submit")
+    $body = $("#body-field").val()
+    if ($body !== ""){
+      $modal.modal("hide")
+    }
+  })
+</script>
