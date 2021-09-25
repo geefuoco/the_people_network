@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :name, :email, :password, :last_name, presence: true
 
   has_many :posts
+  has_many :friendships
+  has_many :friends, through: :friendships
 end
