@@ -11,15 +11,8 @@
   </head>
 
   <body>
-    <!--NAVBAR -->
-    <nav class="navbar navbar-light bg-primary">
-      <div class="container-fluid">
-        <div class="navbar-brand">
-          <%= link_to "The People Network", root_path,
-            class: "btn fw-bold fs-5 text-light" %>
-        </div>
-      </div>
-    </nav>
+
+    <%= render "shared/navbar"%>
     <div class="container-fluid position-absolute top-10 text-center">
       <%= render "shared/flash" %>
     </div>
@@ -28,5 +21,5 @@
 </html>
 
 <script defer>
-  $(".alert").fadeOut(4500)
+  $(".alert").fadeOut(5000)
 </script>

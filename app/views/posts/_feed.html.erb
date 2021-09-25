@@ -1,0 +1,13 @@
+<div class="container">
+  <% posts.each do |post| %>
+    <div class="conatiner">
+      <%# USER AVATAR, NAME, LAST NAME%>
+      <%# POST HEADER (ELIPSES -> dropdown DELETE)%>
+      <%# POST BODY %>
+      <p class="fs-6">
+        <%= post.body%>
+      </p>
+      <%# POST FOOTER (HEART, COMMENT ICON%>
+    </div>
+  <% end %>
+</div>

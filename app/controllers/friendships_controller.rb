@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     @inverse_friendship.destroy
     flash[:notice] = "Friendship has been ended."
-    redirect_to current_user
+    redirect_to root_path
   end
 
 end
