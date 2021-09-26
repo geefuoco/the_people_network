@@ -1,2 +1,2 @@
-$("#main-modal > .modal-content").html(<%= j (render "form")%>)
-$("#main-modal").modal()
+$("#main-modal").find(".modal-content").html("<%= j (render "form")%>")
+$("#main-modal").modal("show")

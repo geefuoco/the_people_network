@@ -29,7 +29,8 @@
             </button>
             <ul class="dropdown-menu">
               <%= link_to "Create Post", new_post_path,
-                class: "dropdown-item" %>
+                class: "dropdown-item",
+                remote: true %>
             </ul>
           </div>
           <%= link_to "#", class: "btn text-start" do %>

@@ -12,7 +12,10 @@
   <div class="conatiner d-flex flex-column">
     <div class="container d-flex flex-column">
       <%= form.label :body %>
-      <%= form.text_area :body, required: true, id: "body-field"%>
+      <%= form.text_area :body,
+         required: true, 
+         id: "body-field",
+         placeholder: "Whats on your mind?" %>
     </div>
   </div>
 </div>
