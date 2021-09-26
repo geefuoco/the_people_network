@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :get_post_ids, only: [:index, :create]
 
   def index
-    @posts = Post.where(user_id: @ids)
+    @posts = Post.where(user_id: @ids).includes(:user)
   end
   
   def show
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash.now[:notice] = "Post created."
-        format.js { @posts = Post.where(user_id: @ids)  }
+        format.js { @posts = Post.where(user_id: @ids).includes(:user) }
       else
         format.js { flash.now[:alert] = "Post could not be created at this time. Try again later." }
       end
