@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   validates :name, :email, :password, :last_name, presence: true
 
-  has_many :posts
-  has_many :friendships
-  has_many :friends, through: :friendships
+  has_many :posts, dependent: :destroy
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, dependent: :destroy
+  has_many :friends_posts, through: :friends, source: :posts
 end

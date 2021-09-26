@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
+  before_action :get_post_ids, only: [:index, :create]
 
   def index
-    @posts = Post.all
-    #change eventually to show only user posts and friend posts with a scope in the post class
+    @posts = Post.where(user_id: @ids)
   end
   
   def show
@@ -19,6 +19,15 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+
+    respond_to do |format|
+      if @post.save
+        flash.now[:notice] = "Post created."
+        format.js { @posts = Post.where(user_id: @ids)  }
+      else
+        format.js { flash.now[:alert] = "Post could not be created at this time. Try again later." }
+      end
+    end
   end
 
   def edit
@@ -37,5 +46,9 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:body, :user_id)
+    end
+
+    def get_post_ids
+      @ids = current_user.friends.pluck(:id) << current_user.id
     end
 end
