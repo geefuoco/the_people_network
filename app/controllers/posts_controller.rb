@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
   before_action :get_post_ids, only: [:index, :create]
-
   def index
-    @posts = Post.where(user_id: @ids).includes(:user)
+    @posts = Post.where(user_id: @ids)
+                 .paginate(page: params[:page], per_page: 15)
+                 .order("created_at desc")
+                 .includes(:user)
+                 
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
   
   def show
@@ -23,7 +30,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash.now[:notice] = "Post created."
-        format.js { @posts = Post.where(user_id: @ids).includes(:user) }
+        format.js 
       else
         format.js { flash.now[:alert] = "Post could not be created at this time. Try again later." }
       end

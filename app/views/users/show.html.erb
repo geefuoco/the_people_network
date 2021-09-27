@@ -1,0 +1,25 @@
+<%= javascript_pack_tag("infinite_scroll/scroll")%>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 d-none d-md-block">
+    </div>
+    <div class="col col-md-6">
+      <div class="container profile-header">
+        
+        PROFILE PHOTO HERE
+        FRIENDS COUNT HERE
+      </div>
+      <div class="container profile-body"
+           id="profile-feed">
+        
+        <%= render "posts/feed", posts: @posts%>
+        
+      </div>
+      <div class="container d-none">
+        <%= will_paginate @posts %>
+      </div>
+    </div>
+    <div class="col-3 d-none d-md-block">
+    </div>
+  </div>
+</div>

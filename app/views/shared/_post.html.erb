@@ -1,0 +1,13 @@
+<div class="conatiner post">
+  <%# USER AVATAR, NAME, LAST NAME%>
+  <div class="container post-header d-flex">
+    <%= image_tag "" %>
+    <h6><%= post.user.name %> <%= post.user.last_name%></h6>
+  </div>
+  <%# POST HEADER (ELIPSES -> dropdown DELETE)%>
+  <%# POST BODY %>
+  <p class="fs-6">
+    <%= post.body%>
+  </p>
+  <%# POST FOOTER (HEART, COMMENT ICON%>
+</div>
