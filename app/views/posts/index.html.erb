@@ -7,6 +7,21 @@
       <div class="container shadow mb-1 feed" 
           id="feed"
           style="padding: 0;">
+        <% if @search_results.any? %>
+          <div class="container my-1 py-3">
+            <% @search_results.each do |user|%>
+              <div class="container d-flex justify-content-between">
+                <%# USER PHOTO%>
+                <p><%= user.name %> <%= user.last_name %></p>
+                <% if !current_user.friendships.find_by(friend_id: user.id) && user.id != current_user.id%>
+                  <%= link_to "Add Friend", friendships_path(friend_id: user.id),
+                    method: :post, 
+                    class: "btn btn-primary mb-2"%>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
         <%= render "feed", posts: @posts %>
         
       </div>

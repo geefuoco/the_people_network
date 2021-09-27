@@ -23,7 +23,18 @@
                   data-bs-dismiss="offcanvas" 
                   aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body d-block d-md-flex justify-content-end">
+        <div class="offcanvas-body d-block d-md-flex justify-content-between">
+          <div class="navbar-nav align-self-center">
+            <%= form_with url:"/",
+               method: :get,
+               class: "d-flex" do |form|%>
+              <%= form.text_field :search, 
+              placeholder: "Search",
+              class:"form-control"%>
+              <%= form.submit "Search",
+                class: "btn btn-sm btn-light mx-2" %>
+            <% end %>
+          </div>
           <div class="navbar-nav">
             <div class="dropdown">          
               <button class="btn text-start dropdown-toggle caret-off"

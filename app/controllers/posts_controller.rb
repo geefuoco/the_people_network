@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :get_post_ids, only: [:index, :create]
   def index
+    @search_results = User.where("name ILIKE ?", params[:search])
     @posts = Post.where(user_id: @ids)
                  .paginate(page: params[:page], per_page: 15)
                  .order("created_at desc")
