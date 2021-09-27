@@ -1,8 +1,28 @@
 <div class="conatiner post">
   <%# USER AVATAR, NAME, LAST NAME%>
-  <div class="container post-header d-flex">
-    <%= image_tag "" %>
-    <h6><%= post.user.name %> <%= post.user.last_name%></h6>
+  <div class="container post-header d-flex justify-content-between">
+    <div class="container d-flex">
+      <%= image_tag "" %>
+      <h6><%= post.user.name %> <%= post.user.last_name%></h6>
+    </div>
+    <% if post.user_id == current_user.id%>
+      <div class="container text-end p-0">
+        <div class="dropdown">      
+          <button class="btn pe-0 dropdown-toggle caret-off"
+                  type="button"
+                  id="dropdown-elipse"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <%= link_to "Delete", post,
+              method: :delete,
+              class: "dropdown-item" %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
   <%# POST HEADER (ELIPSES -> dropdown DELETE)%>
   <%# POST BODY %>

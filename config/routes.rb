@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts
   resources :friendships, only: [:create, :destroy]
-  get "users/:id", to: "users#show"
+  get "users/:id", to: "users#show", as: "user_path"
 
 end

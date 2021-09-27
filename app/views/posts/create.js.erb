@@ -1,5 +1,6 @@
 var post = $("<div class='conatiner post'><div class='container post-header d-flex'><%= j (image_tag '') %><h6><%=j (@post.user.name) %> <%= j (@post.user.last_name) %></h6></div><p class='fs-6'><%= j (@post.body)%></p></div>")
 
 $("#feed").prepend(post.hide().fadeIn(4000))
+$("#no-posts").hide()
 
 $("#main-modal").modal("hide")

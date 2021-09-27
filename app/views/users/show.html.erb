@@ -7,11 +7,21 @@
       <div class="container profile-header">
         
         PROFILE PHOTO HERE
-        FRIENDS COUNT HERE
+        <p><%= @user.name %> <%= @user.last_name %></p>
+        <p class="fw-bold">Friends: <%= @user.friends.count %></p>
       </div>
       <div class="container profile-body"
            id="profile-feed">
         
+        <% if @posts.empty? %>
+          <div class="container text-center shadow rounded py-3" id="no-posts">
+            <p class="lead">Its feeling a little empty over here</p>
+            <p class="fst-italic">Try making a new post</p>
+            <%= link_to "Create Post", new_post_path,
+              remote: true,
+              class: "btn btn-primary "%>
+          </div>
+        <% end %>
         <%= render "posts/feed", posts: @posts%>
         
       </div>
