@@ -33,7 +33,8 @@ class PostsController < ApplicationController
         flash.now[:notice] = "Post created."
         format.js 
       else
-        format.js { flash.now[:alert] = "Post could not be created at this time. Try again later." }
+        flash.now[:alert] = "Post could not be created at this time. Try again later."
+        format.js
       end
     end
   end

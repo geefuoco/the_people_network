@@ -27,5 +27,22 @@
   <p class="fs-6">
     <%= post.body%>
   </p>
-  <%# POST FOOTER (HEART, COMMENT ICON%>
+  <div class="container d-flex justify-content end" id="post-footer">
+    <%# HEART %>
+    <button type=button
+            class="btn"
+            data-bs-target="#comment-form"
+            data-bs-toggle="collapse">
+      <i class="bi bi-chat-left-text"></i>
+    </button>
+  </div>
+  <div class="container" id="comment-form">
+    
+  </div>
+  <div class="container" id="post-comments">
+    <% post.comments.each do |comment| %>
+      <%= render "shared/comment", comment: comment %>
+    <% end %>
+  </div>
+  
 </div>

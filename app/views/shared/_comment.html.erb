@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="container d-flex">
+    <h6><%= comment.user.name %> <%= comment.user.last_name %></h6>
+    <% if comment.user_id == current_user.id %>
+      <%= link_to comment, method: :destroy do %>
+        <span>
+          <i class="bi bi-trash"></i>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="container">
+    <p class="lead">
+      <%= comment.body %>
+    </p>
+  </div>
+</div>
