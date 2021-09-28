@@ -10,7 +10,6 @@ $(()=>{
   const bottom_scroll = $(window).on("scroll", ()=>{
       if (($(window).innerHeight() + $(window).scrollTop()) >= $("body").height()) {
         next_posts = $(".pagination").find(".next_page").attr("href")
-        console.log(next_posts)
         if (next_posts){
           $.getScript(next_posts)
         }

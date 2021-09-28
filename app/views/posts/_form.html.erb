@@ -27,12 +27,15 @@
 </div>
 <% end %>
 
-<script defer>
+<script>
+
   $modal = $("#main-modal")
-  $("#post-submit").on("click", ()=>{
-    $submit = $("#post-submit")
+  $submit = $("#post-submit")
+  $submit.on("click", ()=>{
+    console.log("first clicked")
     $body = $("#body-field").val()
     if ($body !== ""){
+      console.log("clicked")
       $modal.modal("hide")
     }
   })

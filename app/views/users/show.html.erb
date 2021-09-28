@@ -19,7 +19,9 @@
             <p class="fst-italic">Try making a new post</p>
             <%= link_to "Create Post", new_post_path,
               remote: true,
-              class: "btn btn-primary "%>
+              class: "btn btn-primary",
+              "data-bs-toggle" => "modal",
+              "data-bs-target" => "#main-modal"%>
           </div>
         <% end %>
         <%= render "posts/feed", posts: @posts%>

@@ -53,7 +53,9 @@
               <ul class="dropdown-menu">
                 <%= link_to "Create Post", new_post_path,
                   class: "dropdown-item",
-                  remote: true %>
+                  remote: true,
+                  "data-bs-toggle" => "modal",
+                  "data-bs-target" => "#main-modal" %>
                 <%= link_to "Profile", user_path_url(current_user.id),
                 class: "dropdown-item"%>
               </ul>

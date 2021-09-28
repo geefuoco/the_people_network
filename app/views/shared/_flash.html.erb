@@ -1,17 +1,17 @@
-<% if flash.notice %>
+<% if flash.notice && flash.notice != "" %>
   <div class="container alert alert-info">
     <%= flash.notice %>
   </div>
-<% elsif flash.now && flash.now[:notice] %>
+<% elsif flash.now && flash.now[:notice] && flash.now[:notice] != "" %>
   <div class="container alert alert-info">
     <%= flash.now[:notice] %>
   </div>
 <% end %>
-<% if flash.alert %>
+<% if flash.alert && flash.alert != "" %>
   <div class="container alert alert-danger">
     <%= flash.alert %>
   </div>
-<% elsif flash.now && flash.now[:alert] %>
+<% elsif flash.now && flash.now[:alert] && flash.now[:alert] != "" %>
   <div class="container alert alert-danger">
     <%= flash.now[:alert] %>
   </div>
