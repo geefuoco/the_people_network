@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   end
   root "devise/sessions#new"
   devise_for :users
-  resources :posts
+  resources :posts do 
+    resources :comments
+  end
+  resources :comments do
+    resources :comments
+  end
   resources :friendships, only: [:create, :destroy]
   get "users/:id", to: "users#show", as: "user_path"
 

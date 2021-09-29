@@ -27,22 +27,33 @@
   <p class="fs-6">
     <%= post.body%>
   </p>
-  <div class="container d-flex justify-content end" id="post-footer">
+  <div class="container d-flex justify-content-end"
+       id="post-footer">
     <%# HEART %>
-    <button type=button
-            class="btn"
-            data-bs-target="#comment-form"
+    <button class="btn"
+            type="button"
+            aria-labelledby="comments-button"
+            data-bs-target="#comment-form-<%=post.id%>"
             data-bs-toggle="collapse">
-      <i class="bi bi-chat-left-text"></i>
+      <span class="p-2">
+        <i class="bi bi-chat-left-text"></i>
+        <%= post.comments.size %>
+      </span>
     </button>
   </div>
-  <div class="container" id="comment-form">
+  <div class="container collapse" id="comment-form-<%=post.id%>">
+
+    <div class="container" id="post-comments-<%=post.id%>">
+      <% post.comments.each do |comment| %>
+        <%= render "shared/comment", comment: comment %>
+      <% end %>
+    </div>
+    <div class="container p-0">
+
+      <%= render "shared/comment_form", comment: Comment.new, commentable: post %> 
+
     
-  </div>
-  <div class="container" id="post-comments">
-    <% post.comments.each do |comment| %>
-      <%= render "shared/comment", comment: comment %>
-    <% end %>
+    </div>
   </div>
   
 </div>

@@ -1,0 +1,21 @@
+
+<% 
+
+  posted_params = request.fullpath.split("/")
+
+  if posted_params[1].to_s == posted_params[3].to_s
+%>
+<%# comment on comment %>
+$div = "#replies-" + <%= params[:comment_id] %>
+
+<% else %>
+<%# comment on post %>
+
+$div = "#post-comments-" + <%= params[:post_id] %>
+
+<% end %>
+$comment = $("<%= j (render "shared/comment", comment: @comment)%>")
+$($div).append($comment.hide().fadeIn(2500))
+$($div).find("#form-for-comments").remove()
+
+$("#flash").html("<%= j render "shared/flash" %>")

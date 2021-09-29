@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="container d-flex">
+<div class="container p-0">
+  <div class="container d-flex justify-content-between comment">
     <h6><%= comment.user.name %> <%= comment.user.last_name %></h6>
     <% if comment.user_id == current_user.id %>
-      <%= link_to comment, method: :destroy do %>
+      <%= link_to comment, method: :delete do %>
         <span>
           <i class="bi bi-trash"></i>
         </span>
@@ -13,5 +13,17 @@
     <p class="lead">
       <%= comment.body %>
     </p>
+  </div>
+  <div class="container d-flex justify-content-end mb-1">
+  <%# Add a toggle for this, and each comment can have a form ? %>
+    <%= link_to new_comment_comment_path(comment_id: comment.id), 
+      remote: true do %>
+      <i class="bi bi-reply-fill"></i>
+    <% end %>
+  </div>
+  <div class="container pe-0" id="replies-<%= comment.id %>">
+    <% comment.comments.each do |nested_comment| %>
+      <%= render "shared/comment", comment: nested_comment%>
+    <% end %>
   </div>
 </div>

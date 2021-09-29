@@ -14,13 +14,11 @@
 
     <%= render "shared/modal" %>
     <%= render "shared/navbar" %>
-    <div class="container-fluid position-absolute top-10 text-center">
+    <div class="container-fluid position-absolute top-10 text-center" id="flash">
       <%= render "shared/flash" %>
     </div>
     <%= yield %>
   </body>
 </html>
 
-<script defer>
-  $(".alert").fadeOut(5000)
-</script>
+

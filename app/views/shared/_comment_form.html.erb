@@ -1,0 +1,14 @@
+<%= form_with model: [commentable, comment],
+    local: false,
+    remote: true,
+    id: "form-for-comments",
+    class: "d-flex flex-column p-1" do |form| %>
+  <%= form.text_area :body, 
+    placeholder: "Write a comment here",
+    rows: "3"%>
+    <div class="container d-flex justify-content-end py-1 px-0">
+      <%= form.submit "Reply", 
+        class: "btn btn-primary btn-sm"
+        %>
+    </div>
+<% end %>

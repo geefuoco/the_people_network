@@ -1,12 +1,24 @@
-var post = $("<div class='conatiner post'><div class='container post-header d-flex'><%= j (image_tag '') %><h6><%=j (@post.user.name) %> <%= j (@post.user.last_name) %></h6></div><div class="container text-end p-0"><div class="dropdown"><button class="btn pe-0 dropdown-toggle caret-off" type="button" id="dropdown-elipse" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></button><ul class="dropdown-menu"><%= link_to "Delete", post, method: :delete, class: "dropdown-item" %></ul></div></div><p class='fs-6'><%= j (@post.body)%></p></div>")
+<%
 
+  posted_path = request.referrer.split("/")
+  posted_path.each { |ps| puts ps }
+  if posted_path[3] == "users"
+%>
 
+$div = $("#profile-feed")
 
+<% else %>
 
-$("#profile-feed").prepend(post.hide().fadeIn(2500))
+$div = $("#feed")
 
-$("#feed").prepend(post.hide().fadeIn(2500))
+<% end %>
+
+var new_post = $("<%= j render "shared/post", post: @post %>")
+
+$($div).prepend(new_post.hide().fadeIn(2500))
 
 $("#no-posts").hide()
 
 $("#main-modal").modal("hide")
+
+$("#flash").html("<%= j render "shared/flash" %>")
