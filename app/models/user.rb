@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, dependent: :destroy
   has_many :friends_posts, through: :friends, source: :posts
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end
