@@ -24,10 +24,10 @@
       </div>
     <% end %>
   </div>
-  <p class="fs-6">
+  <p class="fs-6 ps-2">
     <%= post.body%>
   </p>
-  <div class="container d-flex justify-content-end"
+  <div class="container d-flex justify-content-end pe-0"
        id="post-footer">
     <%# HEART %>
     <button class="btn"
@@ -37,13 +37,13 @@
             data-bs-toggle="collapse">
       <span class="p-2">
         <i class="bi bi-chat-left-text"></i>
-        <%= post.comments.size %>
+        <%= post.comments_count %>
       </span>
     </button>
   </div>
-  <div class="container collapse" id="comment-form-<%=post.id%>">
+  <div class="container collapse px-1" id="comment-form-<%=post.id%>">
 
-    <div class="container" id="post-comments-<%=post.id%>">
+    <div class="container p-0" id="post-comments-<%=post.id%>">
       <% post.comments.each do |comment| %>
         <%= render "shared/comment", comment: comment %>
       <% end %>

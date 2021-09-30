@@ -10,16 +10,26 @@
     <% end %>
   </div>
   <div class="container">
-    <p class="lead">
+    <p class="fs-6">
       <%= comment.body %>
     </p>
   </div>
   <div class="container d-flex justify-content-end mb-1">
   <%# Add a toggle for this, and each comment can have a form ? %>
-    <%= link_to new_comment_comment_path(comment_id: comment.id), 
-      remote: true do %>
-      <i class="bi bi-reply-fill"></i>
-    <% end %>
+    <button class="btn"
+            type="button"
+            aria-labelledby="reply-button"
+            data-bs-toggle="collapse"
+            data-bs-target="#inner-comment-form-<%=comment.id%>">
+      <span>
+        <i class="bi bi-reply-fill"></i>
+      </span>
+    </button>
+    
+  </div>
+  <div class="container collapse" id="inner-comment-form-<%= comment.id %>">
+    <%= render "shared/comment_form", comment: Comment.new,
+      commentable: comment %>
   </div>
   <div class="container pe-0" id="replies-<%= comment.id %>">
     <% comment.comments.each do |nested_comment| %>

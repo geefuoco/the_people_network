@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :find_commentable, except: :destroy
 
   def new
-    @comment = @commentable.comments.build
   end
 
   def create  
