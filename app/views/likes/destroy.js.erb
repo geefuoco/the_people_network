@@ -1,0 +1,8 @@
+
+$div = "#target-heart-fill-" + <%= params[:post_id]%>
+$($div).fadeOut(1000, ()=> {
+  $($div).replaceWith("<%= j render "shared/new_like", post: Post.find(params[:post_id]) %>")
+})
+  
+
+$("#flash").html("<%= j render "shared/flash" %>")

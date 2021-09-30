@@ -29,7 +29,11 @@
   </p>
   <div class="container d-flex justify-content-end pe-0"
        id="post-footer">
-    <%# HEART %>
+    <% if Like.where(user_id: current_user.id, post_id: post.id).exists? %>
+      <%= render "shared/delete_like", post: post %>
+    <% else %>
+      <%= render "shared/new_like", post: post %>
+    <% end %>
     <%= link_to post_path(id: post.id),
       class: "btn" do %>
       <span class="p-2">

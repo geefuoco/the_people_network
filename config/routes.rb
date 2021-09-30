@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   root "devise/sessions#new"
   devise_for :users
   resources :posts do 
-    resources :comments
+    resources :comments, only: [:new, :create, :destroy]
+    resources :likes, only: [:new, :create, :destroy]
   end
   resources :comments do
-    resources :comments
+    resources :comments, only: [:new, :create, :destroy]
   end
   resources :friendships, only: [:create, :destroy]
   get "users/:id", to: "users#show", as: "user_path"

@@ -1,0 +1,10 @@
+<%= link_to post_likes_path(post_id: post.id),
+method: :post,
+class: "btn",
+id: "target-heart-#{post.id}",
+remote: true do %>
+  <span class="p-2">
+    <i class="bi bi-suit-heart"></i>
+    <%= post.likes.size %>
+  </span>
+<% end %> 
