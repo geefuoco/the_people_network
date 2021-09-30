@@ -14,7 +14,12 @@ class PostsController < ApplicationController
   end
   
   def show
-
+    @post = Post.find(params[:id])
+    @comments = @post.comments.paginate(page: params[:page], per_page: 10).includes(:comments)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new

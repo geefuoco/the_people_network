@@ -2,8 +2,9 @@
     local: false,
     remote: true,
     id: "form-for-comments",
-    class: "d-flex flex-column p-1" do |form| %>
+    class: "d-flex flex-column p-1 mt-2" do |form| %>
   <%= form.text_area :body, 
+    id: "form-text-area",
     placeholder: "Write a comment here",
     rows: "3",
     required: true%>

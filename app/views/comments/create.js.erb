@@ -16,6 +16,5 @@ $div = "#post-comments-" + <%= params[:post_id] %>
 <% end %>
 $comment = $("<%= j (render "shared/comment", comment: @comment)%>")
 $($div).append($comment.hide().fadeIn(2500))
-$($div).find("#form-for-comments").remove()
 
 $("#flash").html("<%= j render "shared/flash" %>")

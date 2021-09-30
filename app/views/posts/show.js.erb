@@ -1,0 +1,10 @@
+$("#load-more").remove()
+$div = "#post-comments-" + <%= params[:id] %>
+$($div).append("<%= j (render "shared/comment_stream", comments: @comments) %>")
+<% if @comments.next_page %>
+    $('.pagination').replaceWith('<%= j (will_paginate @comments) %>');
+    link = $('<div class="container" id="load-more"><%= link_to "Load More",post_path(page: @comments.next_page),remote: true %></div>')
+    $($div).append(link)
+<% else %>
+  $('.pagination').remove();
+<% end %>
