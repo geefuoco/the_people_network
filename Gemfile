@@ -61,3 +61,6 @@ gem "devise", "~> 4.8"
 gem "figaro", "~> 1.2"
 
 gem 'will_paginate'
+gem "omniauth-github", "~> 2.0"
+
+gem "omniauth", "~> 2.0"
