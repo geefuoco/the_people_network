@@ -58,6 +58,9 @@
                   "data-bs-target" => "#main-modal" %>
                 <%= link_to "Profile", user_path_url(current_user.id),
                 class: "dropdown-item"%>
+                <%= link_to "Logout", destroy_user_session_path,
+                  method: :delete,
+                  class: "dropdown-item"%>
               </ul>
             </div>
             <%= link_to "#", class: "btn text-start" do %>
