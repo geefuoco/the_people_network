@@ -78,9 +78,22 @@
                     </p>
                   </span>                   
               </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-  
+              
+              <ul class="dropdown-menu dropdown-menu-end"
+                  id="notifications">
+                <% if @recent_notifications.any? %>
+                  <% @recent_notifications.each do |notification| %>
+                    <li class="dropdown-item">
+                      <%= render "notifications/users/friend_request", notification: notification %>
+                    </li>
+                  <% end %>
+                <% else %>
+                  <li class="dropdown-item">
+                    <p>No new notificatons :(</p>
+                  </li>
+                <% end %>
               </ul>
+              
             </div>
             <%= link_to "#", class: "btn text-start" do %>
                 <span class="text-light fs-3">

@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :last_name])
   end
   
+  def get_recent_notifications
+    @recent_notifications = current_user.notifications.all.order("created_at desc").limit(5)
+  end
 end

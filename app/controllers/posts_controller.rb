@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :get_post_ids, only: [:index, :create]
+  before_action :get_recent_notifications, only: [:index, :show]
   def index
     @search_results = User.where("name ILIKE ?", params[:search])
     @posts = Post.where(user_id: @ids)
@@ -40,14 +41,6 @@ class PostsController < ApplicationController
         format.js { flash.now[:alert] = "Post could not be created at this time. Try again later." } 
       end
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
   end
 
   def destroy
