@@ -1,0 +1,7 @@
+<li class="dropdown-item">
+  <%= link_to user_path_url(id: notification.recipient_id) do %>
+    <p class="btn">
+      <%= notification.user.name%> <%= notification.user.last_name%> has sent you a friend request!
+    </p>
+  <% end %>
+</li>
