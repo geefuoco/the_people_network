@@ -8,7 +8,8 @@
           id="feed"
           style="padding: 0;">
         <% if @search_results.any? %>
-          <div class="container my-1 py-3">
+          <div class="container my-1 py-3 shadow">
+            <h4 class="lead">Search Results</h4>
             <% @search_results.each do |user|%>
               <div class="container d-flex justify-content-between">
                 <%# USER PHOTO%>
