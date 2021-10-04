@@ -13,9 +13,8 @@ class User < ApplicationRecord
   has_many :friends_posts, through: :friends, source: :posts
   has_many :comments, dependent: :delete_all
   has_many :likes, dependent: :delete_all
-  #perhaps put these together and create selectors in the controller like with friendships
   has_many :outgoing_friend_requests, foreign_key: "requestor_id", class_name: :FriendRequest, dependent: :delete_all
-  has_many :incoming_friend_requests, foreign_key: "recipient_id", class_name: :FriendRequest, dependent: :delete_all
+  has_many :notifications, foreign_key: :recipient_id
 
 
   def self.from_omniauth(auth)
