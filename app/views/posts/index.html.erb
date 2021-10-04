@@ -11,13 +11,22 @@
           <div class="container my-1 py-3 shadow">
             <h4 class="lead">Search Results</h4>
             <% @search_results.each do |user|%>
-              <div class="container d-flex justify-content-between">
-                <%# USER PHOTO%>
-                <p><%= user.name %> <%= user.last_name %></p>
+              <div class="container d-flex justify-content-between" 
+              id="person-<%=user.id%>">
+                <%= link_to user_path(id: user.id) do %>
+                  <%# USER PHOTO%>
+                  <p><%= user.name %> <%= user.last_name %></p>
+
+                <% end %>
                 <% if !current_user.friendships.find_by(friend_id: user.id) && user.id != current_user.id%>
-                  <%= link_to "Add Friend", friendships_path(friend_id: user.id),
+                  <% if current_user.outgoing_friend_requests.find_by(recipient_id: user.id) %>
+                    <a href="" class="btn btn-primary disabled">Sent</a>
+                  <% else %>
+                  <%= link_to "Add Friend", friend_requests_path(recipient_id: user.id),
                     method: :post, 
+                    remote: true,
                     class: "btn btn-primary mb-2"%>
+                  <% end %>
                 <% end %>
               </div>
             <% end %>

@@ -7,12 +7,16 @@ class User < ApplicationRecord
 
   validates :name, :email, :password, presence: true
 
-  has_many :posts, dependent: :destroy
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships, dependent: :destroy
+  has_many :posts, dependent: :delete_all
+  has_many :friendships, dependent: :delete_all
+  has_many :friends, through: :friendships, dependent: :delete_all
   has_many :friends_posts, through: :friends, source: :posts
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :delete_all
+  has_many :likes, dependent: :delete_all
+  #perhaps put these together and create selectors in the controller like with friendships
+  has_many :outgoing_friend_requests, foreign_key: "requestor_id", class_name: :FriendRequest, dependent: :delete_all
+  has_many :incoming_friend_requests, foreign_key: "recipient_id", class_name: :FriendRequest, dependent: :delete_all
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

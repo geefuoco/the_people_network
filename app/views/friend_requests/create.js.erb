@@ -1,0 +1,4 @@
+$div = "#person-" + <%=params[:recipient_id]%>
+$($div).find("a.btn").addClass("disabled")
+$($div).find("a.btn").html("Sent")
+$("#flash").html("<%= j render "shared/flash" %>")
