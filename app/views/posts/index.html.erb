@@ -13,9 +13,9 @@
             <% @search_results.each do |user|%>
               <div class="container d-flex justify-content-between" 
               id="person-<%=user.id%>">
-                <%= link_to user_path(id: user.id) do %>
+                <%= link_to user_path_url(id: user.id) do %>
                   <%# USER PHOTO%>
-                  <p><%= user.name %> <%= user.last_name %></p>
+                  <p class="btn"><%= user.name %> <%= user.last_name %></p>
 
                 <% end %>
                 <% if !current_user.friendships.find_by(friend_id: user.id) && user.id != current_user.id%>

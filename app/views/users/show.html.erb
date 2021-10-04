@@ -13,7 +13,7 @@
       <div class="container profile-body"
            id="profile-feed">
         
-        <% if @posts.empty? %>
+        <% if @posts.empty? && current_user == @user %>
           <div class="container text-center shadow rounded py-3" id="no-posts">
             <p class="lead">Its feeling a little empty over here</p>
             <p class="fst-italic">Try making a new post</p>
