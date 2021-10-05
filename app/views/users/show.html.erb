@@ -7,6 +7,7 @@
         <%= image_tag user_avatar(@user), class: "rounded-circle", size:"100x100"%>
         <p><%= @user.name %> <%= @user.last_name %></p>
         <p class="fw-bold">Friends: <%= @user.friends.count %></p>
+        <%= link_to "Edit Profile", edit_user_registration_path(@user)%>
       </div>
     </div>
     <div class="col col-md-8">

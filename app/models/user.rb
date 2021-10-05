@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:github]
 
-  validates :name, :email, :password, presence: true
+  validates :name, :email, presence: true
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
   has_many :friends_posts, through: :friends, source: :posts
