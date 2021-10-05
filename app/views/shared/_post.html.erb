@@ -26,7 +26,10 @@
       </div>
     <% end %>
   </div>
-  <p class="fs-6 ps-2 pt-2">
+  <div class="container">
+    <%= image_tag post_image(post), class: "w-75"%>
+  </div>
+  <p class="fs-6 ps-4 pt-2">
     <%= post.body%>
   </p>
   <div class="container d-flex justify-content-end pe-0"

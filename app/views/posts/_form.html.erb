@@ -1,22 +1,46 @@
 <%= form_with model: @post, local: false, remote: true do |form| %>
 
-<div class="modal-header">
-  <h5 class="modal-title">Create a Post</h5>
-  <button class="btn-close"
-          type="button"
-          data-bs-dismiss="modal"
-          aria-label="Close">
-  </button>
+<div class="modal-header d-flex flex-column">
+  <div class="container d-flex justify-content-between">  
+    <h5 class="modal-title">Create a Post</h5>
+    <button class="btn-close"
+            type="button"
+            data-bs-dismiss="modal"
+            aria-label="Close">
+    </button>
+  </div>
+  <div class="container d-flex justify-content-start px-0">  
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#modal-text"
+        data-bs-toggle="tab">Text</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#modal-image"
+          data-bs-toggle="tab">Image</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="modal-body">
   <div class="conatiner d-flex flex-column">
-    <div class="container d-flex flex-column">
-      <%= form.label :body %>
-      <%= form.text_area :body,
-         required: true, 
-         id: "body-field",
-         placeholder: "Whats on your mind?",
-         rows: "5" %>
+    <div class="container d-flex flex-column tab-content">
+      <div class="container tab-pane active" id="modal-text">      
+        <div class="container d-flex flex-column">
+          <%= form.label :body %>
+          <%= form.text_area :body,
+            required: true, 
+            id: "body-field",
+            placeholder: "Whats on your mind?",
+            rows: "5" %>
+        </div>
+      </div>
+      <div class="container tab-pane"
+        id="modal-image">
+        <div class="container d-flex">
+          <%= form.file_field :image%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
