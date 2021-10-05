@@ -34,34 +34,34 @@
       </div>
     </div>
     <div class="col-3 d-none d-md-block">
-      <div class="container text-center shadow mt-3 py-3">
-      <h1 class="fs-4">
-      
-      Friend Requests
-      </h1> 
+      <% if @user == current_user%>
+        <div class="container text-center shadow mt-3 py-3">
+        <h1 class="fs-4">
+        
+        Friend Requests
+        </h1> 
 
-        <%if @friend_requests.any?%>
-          <% @friend_requests.each do |request| %>
-            <div class="container my-2 border rounded">
-              <%= request.requestor.name %> <%= request.requestor.last_name %>
-              <div class="container button-group d-flex py-2 justify-content-center">
-                <%= link_to "Accept", friendship_path(friend_id: request.requestor.id),
-                  class: "btn btn-sm btn-primary mx-1",
-                  method: :post,
-                  remote: true %>
-                <%= link_to "Ignore", friend_request_path(id: request.id),
-                  class: "btn btn-sm btn-primary mx-1",
-                  method: :delete,
-                  remote: true%>
+          <%if @friend_requests.any?%>
+            <% @friend_requests.each do |request| %>
+              <div class="container my-2 border rounded">
+                <%= request.requestor.name %> <%= request.requestor.last_name %>
+                <div class="container button-group d-flex py-2 justify-content-center">
+                  <%= link_to "Accept", user_friendships_url(friend_id: request.requestor.id, user_id: current_user.id),
+                    class: "btn btn-sm btn-primary mx-1",
+                    method: :post %>
+                  <%= link_to "Ignore", friend_request_path(id: request.id),
+                    class: "btn btn-sm btn-primary mx-1",
+                    method: :delete%>
+                </div>
               </div>
-            </div>
+            <% end %>
+          <% else %>
+          <div class="container pb-3">
+            No friend requests at this time :)
+          </div>
           <% end %>
-        <% else %>
-        <div class="container pb-3">
-          No friend requests at this time :)
         </div>
-        <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

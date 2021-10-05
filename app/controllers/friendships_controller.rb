@@ -4,10 +4,10 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     @friend = User.find(params[:friend_id])
     @inverse_friendship = @friend.friendships.build(friend_id: current_user.id)
-    @friend_request = FriendRequest.where("recipient_id = ? AND requestor_id = ?", current_user.id, @friend.id)
+
     if @friendship.save && @inverse_friendship.save
       flash[:notice] = "Added friend."
-      @friend_request.destroy
+      FriendRequest.destroy_by(recipient_id: current_user.id, requestor_id: @friend.id)
     else
       flash[:alert] = "Friend could not be added at this time"
     end

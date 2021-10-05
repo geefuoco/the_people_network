@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments, only: [:new, :create, :destroy]
   end
-  resources :friendships, only: [:create, :destroy]
+  resources :users, only: [:show] do
+    resources :friendships, only: [:create, :destroy]
+  end
   resources :friend_requests, only: [:create, :destroy]
   get "users/:id", to: "users#show", as: "user_path"
 
