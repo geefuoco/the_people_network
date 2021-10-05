@@ -9,6 +9,11 @@
     </div>
 
     <div class="container mt-2">
+      <%= f.label "Profile Photo", :avatar %><br />
+      <%= f.file_field :avatar%>
+    </div>
+
+    <div class="container mt-2">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true%>
     </div>

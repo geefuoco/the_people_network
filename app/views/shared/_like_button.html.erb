@@ -1,0 +1,5 @@
+<% if Like.where(user_id: current_user.id, post_id: post.id).exists? %>
+  <%= render "shared/delete_like", post: post %>
+<% else %>
+  <%= render "shared/new_like", post: post %>
+<% end %>

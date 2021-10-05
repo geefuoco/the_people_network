@@ -1,16 +1,17 @@
 <%= javascript_pack_tag("infinite_scroll/scroll")%>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3 d-none d-md-block">
-    </div>
-    <div class="col col-md-6">
-      <div class="container profile-header">
+    <div class="col-12 col-md-2">
+      <div class="container profile-header mt-3">
         
-        PROFILE PHOTO HERE
+        <%= image_tag user_avatar(@user), class: "rounded-circle", size:"100x100"%>
         <p><%= @user.name %> <%= @user.last_name %></p>
         <p class="fw-bold">Friends: <%= @user.friends.count %></p>
       </div>
-      <div class="container profile-body"
+    </div>
+    <div class="col col-md-8">
+
+      <div class="container profile-body mt-3"
            id="profile-feed">
         
         <% if @posts.empty? && current_user == @user %>
@@ -31,7 +32,7 @@
         <%= will_paginate @posts %>
       </div>
     </div>
-    <div class="col-3 d-none d-md-block">
+    <div class="col-2 d-none d-md-block">
     </div>
   </div>
 </div>
