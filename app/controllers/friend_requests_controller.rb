@@ -16,9 +16,9 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    @friend_request = FriendRequest.where("requestor_id = ? AND recipient_id = ?",current_user.id, params[:recipient_id])
+    @friend_request = FriendRequest.find(params[:id])
     @friend_request.destroy
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   

@@ -10,7 +10,7 @@
         <%= link_to "Edit Profile", edit_user_registration_path(@user)%>
       </div>
     </div>
-    <div class="col col-md-8">
+    <div class="col col-md-7">
 
       <div class="container profile-body mt-3"
            id="profile-feed">
@@ -33,7 +33,35 @@
         <%= will_paginate @posts %>
       </div>
     </div>
-    <div class="col-2 d-none d-md-block">
+    <div class="col-3 d-none d-md-block">
+      <div class="container text-center shadow mt-3 py-3">
+      <h1 class="fs-4">
+      
+      Friend Requests
+      </h1> 
+
+        <%if @friend_requests.any?%>
+          <% @friend_requests.each do |request| %>
+            <div class="container my-2 border rounded">
+              <%= request.requestor.name %> <%= request.requestor.last_name %>
+              <div class="container button-group d-flex py-2 justify-content-center">
+                <%= link_to "Accept", friendship_path(friend_id: request.requestor.id),
+                  class: "btn btn-sm btn-primary mx-1",
+                  method: :post,
+                  remote: true %>
+                <%= link_to "Ignore", friend_request_path(id: request.id),
+                  class: "btn btn-sm btn-primary mx-1",
+                  method: :delete,
+                  remote: true%>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+        <div class="container pb-3">
+          No friend requests at this time :)
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
