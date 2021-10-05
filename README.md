@@ -5,13 +5,19 @@ Project for TheOdinProject
 
 Features: 
 - User authentication using devise
-- OAuth with Facebook
-- Create posts for wall
+- OAuth with Github
+- Create posts for profile
 - Comment on posts and comments
 - View profile
 - Send friend requests
 - Like a post or comment
-- send messages in messanger
 - recieve welcome email upon sign up
 - receive notifications
-- made with bootstrap and jquery
+- Create posts with an image, text or both
+
+Future plans:
+- Implement a private messaging system
+- Upload multiple photos in a post
+
+
+Made with bootstrap and jquery
