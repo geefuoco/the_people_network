@@ -14,7 +14,7 @@ class Comment < ApplicationRecord
     while parent.is_a? Comment
       parent = parent.commentable
     end
-    parent.increment! :comments_count
+    parent.increment! :comment_count
   end
 
 
@@ -23,6 +23,6 @@ class Comment < ApplicationRecord
     while parent.is_a? Comment
       parent = parent.commentable
     end
-    parent.decrement! :comments_count
+    parent.decrement! :comment_count
   end
 end
