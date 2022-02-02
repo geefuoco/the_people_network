@@ -1,4 +1,6 @@
-A Facebook clone.
+# The People Network
+
+A social media website built with Ruby on Rails 
 
 Project for TheOdinProject
 (https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/rails-final-project)
